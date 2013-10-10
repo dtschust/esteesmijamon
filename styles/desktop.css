@@ -1,0 +1,457 @@
+html,
+body,
+div.main {
+	height: 100%;
+        width: 100%;
+}
+
+body {
+	background-color: #eee;
+	margin: 0;
+}
+
+div {
+	font-family: 'Helvetica Neue', Helvetica, Arial, 'lucida grande',tahoma,verdana,arial,sans-serif;
+	font-size: 14px;
+}
+
+#access_token {
+	display:none;
+}
+
+div#menu {
+	height: 15px;
+	position: absolute;
+	width: 100%;
+	z-index: 100;
+}
+
+div#main {
+	bottom: 0;
+	left: 0;
+	min-width: 600px;
+	overflow: hidden;
+	position: absolute;
+	right: 0;
+	top: 35px;
+	width: 100%;
+}
+
+div.leftRail,
+div.rightSide {
+	display: inline-block;
+	padding-bottom: 10px;
+	position: absolute;
+}
+
+div.leftRail {
+	background-color: #eee;
+	bottom: 40px;
+	overflow-x: hidden;
+        overflow-y: auto;
+	top: 0;
+}
+
+div.rightSide {
+	bottom: 0;
+	left: 130px;
+	right: 10px;
+	top: 50px;
+}
+
+div.rightSide div.main {
+	display: inline-block;
+	padding: 0 10px 0 10px;
+}
+
+
+div.mainHeader {
+	height: 50px;
+	left: 130px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+div.main div.content {
+	height: 100%;
+	margin-top: 10px;
+	overflow-y: scroll;
+	position: relative;
+}
+
+/* Feed item specific*/
+div.feed_item:first-child div.feed_item_title,
+div.feed_item:first-child div.feed_item_menu {
+	border-top: 1px solid #b3ddf2;
+}
+
+div.feed_item {
+	margin: 0 10px;
+	text-align: center;
+}
+
+div.feed_item_menu {
+	cursor: pointer;
+	display: table;
+	float: right;
+	height: 25px;
+	line-height: 25px;
+	padding: 5px 0 5px 0;
+	vertical-align: middle;
+}
+
+div.feed_item_menu img {
+	display: table-cell;
+	height: 15px;
+	margin: 0 0 1px 0;
+	width: 13px;
+}
+
+div.feed_item_menu span {
+	cursor: default;
+}
+
+div.feed_item_menu a,
+div.feed_item_menu span {
+	color: #f00;
+	display: table-cell;
+	padding: 0 10px 0 10px;
+	text-decoration: none;
+	width: 15px;
+	vertical-align: middle;
+}
+
+div.feed_item_title{
+	background-color: #fff;
+	border-bottom: 1px solid #b3ddf2;
+	cursor: pointer;
+	height: 15px;
+	line-height: 15px;
+	margin-top: 0;
+	padding: 10px;
+	text-align: left;
+	vertical-align: middle;
+}
+
+div.feed_item_title:hover {
+	background-color: #b3ddf2;
+}
+
+div.feed_item_title span.feed_title {
+	display: inline-block;
+	overflow: hidden;
+	position: absolute;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 500px;
+}
+
+div.feed_item_title.selected {
+	background-color: #b3ddf2;
+	margin-bottom: 5px;
+}
+
+div.feed_item_title span.feed_title a {
+	color: #000;
+	text-decoration: none;
+	padding-right: 10px;
+}
+
+div.feed_item_title span.time_stamp {
+	color: #000;
+	float: right;
+	font-weight: normal;
+	padding-right: 20px;
+}
+
+div.feed_item_title.readIs_false {
+	font-weight: bold;
+}
+
+/*Add Feed list option*/
+div.feed_list_float {
+	background-color: #b3ddf2;
+	bottom: 0;
+        height: 15px;
+        padding: 10px 0;
+	position: fixed;
+	text-align: center;
+	width: 150px;
+}
+
+a div.feed_list_float {
+	color: #000;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/*Feed list*/
+div.feed_list {
+	background-color: #eee;
+	color: #929191;
+	display: inline-block;
+	padding: 10px 10px 0 10px;
+ 	width: 120px;
+}
+
+div.feed_list h3:first-child {
+	margin-top: 0;
+}
+
+div.feed_list h3 {
+	margin: 10px 0 5px 0;
+}
+
+div.feed_list a {
+    color: #929191;
+}
+
+div.feed_list li {
+	list-style-type: none;
+	padding-top: 5px;
+}
+
+div.feed_list li div.truncate {
+	display: inline-block;
+        overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 90px;
+}
+
+div.feed_list li .count {
+	float: right;
+	padding-right: 10px;
+}
+
+div.feed_list li a {
+	text-decoration: none;
+}
+
+div.feed_list li.unread,
+div.feed_list li.unread a {
+	color: #000;
+	font-weight: bold;
+}
+
+
+
+
+/* Menu */
+div#menu {
+	background-color: #002856;
+	color: #FFF;
+	margin: 0;
+	padding: 10px 0;
+	text-align: center;
+}
+
+div#menu p {
+	display: inline-block;
+	float: left;
+	font-weight: bold;
+	margin: 0;
+	padding: 0 10px;
+}
+
+div#menu div.controls {
+	position: absolute;
+	right: 0;
+}
+
+div#menu div.controls a {
+	color: #FFF;
+	font-weight: bold;
+	padding: 0 10px;
+	text-decoration: none;
+}
+
+/* main header*/
+div.mainHeader h1 {
+	display: inline-block;
+}
+
+div.mainHeader {
+        background-color: #b3ddf2;
+	display: inline-block;
+	margin: 0 0 10px 20px;
+	text-align: center;
+}
+
+div.mainHeader h1 {
+	left: 0;
+	line-height: 50px;
+	margin: 0;
+	position: relative;
+	right: 0;
+	text-align: center;
+	vertical-align: middle;
+}
+
+div.mainHeader select {
+	float: right;
+	margin: 15px 10px;
+}
+
+/* Feed item content */
+div.feed_item_content p:first-child {
+	margin-top: 0;
+}
+
+div.feed_item_content.sticky {
+	margin-top: 25px;
+}
+div.feed_item_content {
+	background-color: #fff;
+	border: 1px solid #b3ddf2;
+	line-height: 1.5;
+	margin: 0 20px 15px 20px;
+	padding: 20px;
+	position: relative;
+	text-align: left;
+}
+
+div.feed_item_content img {
+	max-width: 70%;
+	float: none;
+}
+
+div.feed_item_content.hidden {
+	display: none;
+}
+
+div.feed_item_bar.sticky {
+	left: 150px;
+	position: fixed;
+	right: 10px;
+	top: 95px;
+	z-index: 1000;
+}
+
+
+/* Login */
+div.login span.intro {
+	font-size: 35px;
+}
+
+div.login span.intro a,
+div.failedLogin a {
+	color: #002856;
+	font-weight: bold;
+}
+
+div.login form {
+	background-color: #b3ddf2;
+	border: 1px solid #000;
+	border-radius: 5px;
+	display:block;
+	font-weight: bold;
+	margin: 25px auto;
+	width: 300px;
+}
+
+div.login span {
+	clear: both;
+	display: block;
+	margin: 10px auto 0 auto;
+	width: 100%;
+}
+
+div.login input {
+	clear: both;
+	display: block;
+	margin: 3px auto 10px auto;
+	width: 80%;
+}
+
+div.login input[type="submit"] {
+	margin: 15px auto;
+	width: 100px;
+}
+
+div.login,
+div.loginSuccess,
+div.logoutSuccess {
+	display: block;
+	margin: 30px auto;
+	text-align: center;
+	width: 600px;
+}
+
+div.loginSuccess,
+div.logoutSuccess {
+	font-size: 50px;
+	margin: auto;
+}
+
+div.login div.failedLogin {
+	color: #c24612;
+	font-size: 20px;
+	font-weight: bold;
+	margin: 25px auto;
+}
+
+/* Search */
+div.search input {
+	display: block;
+	margin: 5px auto;
+}	
+
+div.search input[type="text"] {
+	width: 100px;
+}
+
+/* Keyboard shortcuts overlay */
+div.keyboardShortcutsContainer {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 0 45px #888888;
+	left: 250px;
+	position: fixed;
+	right: 110px;
+	top: 155px;
+	z-index:1000;
+}
+
+div.keyboardShortcutsContainer.hidden {
+	display: none;
+}
+
+div.keyboardShortcuts {
+	margin: auto;
+	display: block;
+	text-align: center;
+	font-size: 25px;
+}
+
+div.keyboardShortcuts table {
+	margin: auto auto 20px auto;
+}
+
+div.keyboardShortcuts td {
+	padding: 5px 25px;
+	text-align: left;
+}
+
+div.keyboardShortcuts td.center {
+	text-align: center;
+}
+
+div.keyboardShortcuts h5 {
+	font-size: 40px;
+	margin: 10px auto;
+}
+
+div.keyboardShortcutsContainer div.close a {
+	color: #000;
+	text-decoration: none;
+}
+
+div.keyboardShortcutsContainer div.close {
+	font-size: 15px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+

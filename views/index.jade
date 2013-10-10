@@ -1,0 +1,97 @@
+extends layout
+
+block content
+  div
+    div.leftRail
+      div.feed_list
+        h3 All feeds
+        li.unread: a(href="/feeds/all") All items
+        li.unread: a(href="/feeds/unread") Unread only
+        li.unread: a(href="/starred") Starred
+        h3 Search 
+        div.search
+          form(name="input", action="/search", method="post")
+            input(type="text",name="search")
+            input(type="submit", value="Search")
+        if streams
+          h3 Streams
+          each item in streams
+            li.unread
+              a.truncate(href="/loadStream/#{item.stream_id}")  
+                div.truncate(title="#{item.title}")
+                  !{item.title} 
+        if feeds
+          h3 Feeds
+          each item in feeds
+              //- TODO: Store feeds with a positive count separately to avoid looping through each feed item twice
+              if item.feed_count
+                li.unread
+                  a.truncate(href="/loadFeed/#{item.feed_id}/unread")
+                    div.truncate(title="#{item.title}")
+                      !{item.title} 
+                    span.count
+                      !{item.feed_count}
+          each item in feeds
+              if !item.feed_count
+                li
+                  a(href="/loadFeed/#{item.feed_id}/unread")
+                    div.truncate(title="#{item.title}")
+                      !{item.title}  
+                    span.count
+                      |0
+      //-TODO: Clean up onclick event syntax
+      a(href="#",onclick="event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);addFeed();return false")
+        div.feed_list_float: span Add Feed
+    div.mainHeader
+      if read_status
+        select(onChange="toggleShowReadItems(this)")
+          if read_status == "Unread"
+            option(value="Unread", selected="selected")  Unread
+            option(value="All")  All
+          else
+            option(value="All", selected="selected")  All
+            option(value="Unread")  Unread
+      if feed_name
+        h1 #{feed_name} (#{count}) 
+      else
+        h1 All (#{count}) 
+    div.rightSide
+      div.main
+        if count
+          div#content.content
+            each item in feed_items
+              div.feed_item(id="#{item.feed_item_id}")
+                div.feed_item_bar
+                  div.feed_item_menu(onclick="showHide('#{item.feed_item_id}')")
+                    if (item.read==true)
+                      //-TODO: Clean up onclick event syntax
+                      a.toggleRead(title="Mark as read",href="#",onclick="event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);toggleRead('#{item.feed_item_id}');return false") ○
+                    else
+                      //-TODO: Clean up onclick event syntax
+                      a.toggleRead(title="Mark as unread",href="#",onclick="event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);toggleRead('#{item.feed_item_id}');return false") ●
+                    if (item.starred==true)
+                      //-TODO: Clean up onclick event syntax
+                      a.toggleStar(title="Unstar",href="#",onclick="event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);toggleStar('#{item.feed_item_id}');return false") ★
+                    else
+                      //-TODO: Clean up onclick event syntax
+                      a(title="Star",class="toggleStar",href="#",onclick="event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);toggleStar('#{item.feed_item_id}');return false") ☆
+                    if (read_later_service && read_later_service != "none")
+                      if (item.read_later==true)
+                        span.toggleReadLater(title="Saved to #{read_later_service}") ✓
+                      else
+                        //-TODO: Clean up onclick event syntax
+                        a.toggleReadLater(title="Save to #{read_later_service}",href="#",onclick="event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);toggleReadLater('#{item.feed_item_id}');return false") <img src="/images/read_later.png">
+                    //-TODO: Clean up onclick event syntax
+                    a(title="Open in new window", href="#{item.url}",target="_blank",onclick="event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);") 
+                      img(src="/images/open_in_new_window.png")
+                  div(class="feed_item_title readIs_#{item.read} starredIs_#{item.starred} readLaterIs_#{item.read_later}",onclick="showHide('#{item.feed_item_id}')")
+                    span.feed_title(title="#{item.title}")
+                      !{item.feed_name}:
+                      !{item.title}
+                    span.time_stamp
+                      !{item.created_at}
+                div.feed_item_content.hidden
+                  if item.body
+                    !{item.body}
+                  else
+                    p !{item.title}

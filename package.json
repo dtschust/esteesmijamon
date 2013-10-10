@@ -1,0 +1,11 @@
+{
+  "name": "este-es-mi-jamon",
+  "description": "feed wrangler rss reader",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.3.1",
+    "async": "0.2.9",
+    "jade": "0.31.2"
+  }
+}

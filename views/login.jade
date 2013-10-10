@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  div.login
+    span.intro
+      | Sign in using your 
+      a(href="http://www.feedwrangler.net")
+        | Feed Wrangler 
+      | credentials, or 
+      a(href="/authenticateDemo")
+        | see a demo now!
+    if error
+      div.failedLogin: span.
+        Invalid email or password
+    form(name="input", action="authenticate", method="post")
+      span Email 
+      input(type="text",name="username")
+      span Password 
+      input(type="password",name="pwd")
+      input(type="submit", value="Submit")
+    if error
+      div.failedLogin
+        a(href="https://feedwrangler.net/password_resets/new") Reset password

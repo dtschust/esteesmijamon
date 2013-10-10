@@ -1,0 +1,46 @@
+!!!
+html
+  head
+    script(type="text/javascript").
+      var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-42726644-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();
+    script(type='text/javascript', src='/scripts/jquery-2.0.3.min.js')
+    script(type='text/javascript', src='/scripts/jquery.hotkeys.js')
+    script(type='text/javascript', src='/scripts/jquery.viewport.mini.js')
+    script(type='text/javascript', src='/scripts/esteesmijamon.js')
+    link(rel='stylesheet', href='/styles/desktop.css')
+
+    title Este Es Mi Jamón
+
+    span#access_token #{access_token}
+  body
+    #menu
+      p Este Es Mi Jamón
+      div.controls
+        //-TODO: Clean up onclick event syntax
+        a(href="#",onclick="event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);showHideKeyboardOverlay();return false") Keyboard Shortcuts
+        if access_token
+          a(href="/logout") Logout
+    #main
+      block content
+  div.keyboardShortcutsContainer.hidden
+    div.close
+      //-TODO: Clean up onclick event syntax
+      a(href="#",onclick="event.stopPropagation ? event.stopPropagation() : (event.cancelBubble=true);showHideKeyboardOverlay();return false") Close
+    div.keyboardShortcuts
+      h5 Keyboard Shortcuts
+      table
+        tr
+          td Next item
+          td.center j
+        tr
+          td Previous item
+          td.center k
+        tr
+          td Mark item as read/unread
+          td.center m
+        tr
+          td Star item
+          td.center s
+        tr
+          td Open item in new window
+          td.center o
